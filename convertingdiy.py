@@ -3,7 +3,7 @@ Author: Janiya Richardson
 Date: 02/24/24
 
 
-This program is a test to converting files diy style
+This program is a test for converting files diy style
 
 This program will also attempt in asking the user for a file from their computer and then converting it
 """
