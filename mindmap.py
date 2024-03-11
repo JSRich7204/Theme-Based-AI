@@ -11,6 +11,9 @@ Attempt #1 using BERT
 import docx
 import pypdf
 
+import nltk
+nltk.download('punkt')
+
 import tkinter as tk
 from tkinter import filedialog
 import torch
