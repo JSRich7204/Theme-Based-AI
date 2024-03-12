@@ -2,18 +2,15 @@
 Author: Janiya Richardson
 Date: 03/03/24
 
-
-This program will generate a mind map based themes between words by using the pre-trained model GPT
+This program will generate a mind map based on themes between words using the pre-trained model GPT
 Attempt #3 using clustering
 """
 
 # Import necessary libraries
 import docx
 import pypdf
-
 import tkinter as tk
 from tkinter import filedialog
-
 import torch
 from transformers import GPT2Tokenizer, GPT2Model
 from sklearn.cluster import KMeans
@@ -24,7 +21,6 @@ import threadpoolctl
 
 # Use threadpoolctl to limit OpenMP threads
 threadpoolctl.threadpool_limits(1)
-
 
 # Step 1: Convert the file to txt
 def ask_for_file():
@@ -41,7 +37,6 @@ def ask_for_file():
         print("No file selected.")
         return ""
 
-
 def pdf_to_txt(pdf_file):
     text = ''
     with open(pdf_file, 'rb') as file:
@@ -51,14 +46,12 @@ def pdf_to_txt(pdf_file):
             text += page.extract_text()
     return text
 
-
 def docx_to_txt(docx_file):
     doc = docx.Document(docx_file)
     text = ''
     for para in doc.paragraphs:
         text += para.text + '\n'
     return text
-
 
 text = ask_for_file()
 
@@ -79,7 +72,7 @@ embeddings = outputs.last_hidden_state
 embeddings_2d = embeddings.squeeze(0).numpy()
 
 # Perform clustering
-num_clusters = 1  # Example number of clusters
+num_clusters = 4 # Example number of clusters
 kmeans = KMeans(n_clusters=num_clusters)
 kmeans.fit(embeddings_2d)
 
