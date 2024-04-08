@@ -56,7 +56,7 @@ def docx_to_txt(docx_file):
 text = ask_for_file()
 
 # Define a list of stop words
-stop_words = {'the', 'and', 'but', 'however', 'a', 'an', 'in', 'on', 'at', 'for', 'with', 'without', 'under', 'over', 'between', 'into', 'through', 'during', 'before', 'after', 'above', 'below', 'to', 'from', 'up', 'down', 'out', 'off', 'over', 'under', 'again', 'further', 'then', 'once', 'here', 'there', 'when', 'where', 'why', 'how', 'all', 'any', 'both', 'each', 'few', 'more', 'most', 'other', 'some', 'such', 'no', 'nor', 'not', 'only', 'own', 'same', 'so', 'than', 'too', 'very', 's', 't', 'can', 'will', 'just', 'don', 'should', 'now'}
+stop_words = {'the', 'and', 'but', 'however', 'a', 'an', 'in', 'on', 'at', 'for', 'with', 'without', 'under', 'over', 'between', 'into', 'through', 'during', 'before', 'after', 'above', 'below', 'to', 'from', 'up', 'down', 'out', 'off', 'over', 'under', 'again', 'further', 'then', 'once', 'here', 'there', 'when', 'where', 'why', 'how', 'all', 'any', 'both', 'each', 'few', 'more', 'most', 'other', 'some', 'such', 'no', 'nor', 'not', 'only', 'own', 'same', 'so', 'than', 'too', 'very', 's', 't', 'can', 'will', 'just', 'don', 'should', 'now', 'that', 'Ah', 'Oh'}
 
 def create_word_matrix(text):
     # Convert text to lower case to ignore case sensitivity
@@ -122,7 +122,7 @@ def create_network_map(word_matrix, similar_words, text):
                 if word in similar_words:
                     G.add_node(word)
         # Add edges between similar words with a threshold
-        threshold = (calculate_total_word_pairs(text) / calculate_unique_word_pairs(text)) * 10 # Only add an edge if words appear together more than 'threshold' times
+        threshold = (calculate_total_word_pairs(text) / calculate_unique_word_pairs(text)) * 1000 # Only add an edge if words appear together more than 'threshold' times
         word_pair_count = {}
         for i, row in enumerate(word_matrix):
             for word1 in row:
