@@ -25,6 +25,12 @@ import networkx as nx
 nltk.download('punkt')
 nltk.download('stopwords')
 
+# Get the list of English stopwords
+stop_words = stopwords.words('english')
+
+# Add your custom words
+stop_words.extend(['really', 'like'])
+
 
 #Step 1: Convert the file to txt
 def ask_for_file():
